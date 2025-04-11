@@ -11,7 +11,7 @@ pipeline {
   }
 
   tools {
-    jdk 'jdk17'
+    jdk 'jdk11'
 }
 
   stages {
@@ -23,7 +23,7 @@ pipeline {
     
     stage('Build Container') {
       steps {
-        sh 'docker build -t myapp:pr .'
+        sh './gradlew clean assemble'
       }
     }
 
