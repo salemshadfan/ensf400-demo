@@ -82,3 +82,6 @@ For API testing and Selenium tests, please install:
 2. Install pip if needed by running:
    ```bash
    python get-pip.py
+
+3. Done.
+   
