@@ -20,6 +20,11 @@ pipeline {
         checkout scm
       }
     }
+    stage('Check Java Version') {
+    steps {
+        sh 'java -version'
+        }
+    }
     
     stage('Build Container') {
       steps {
