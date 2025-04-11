@@ -10,9 +10,6 @@ pipeline {
     skipStagesAfterUnstable()
   }
 
-  tools {
-    jdk 'jdk11'
-  }
 
   stages {
     stage('Checkout') {
