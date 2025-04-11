@@ -66,12 +66,20 @@ pipeline {
     // patterns that suggest potential bugs.
     stage('Static Analysis') {
       steps {
-        sh './gradlew sonarqube'
+        sh "./gradlew sonarqube -X --stacktrace -Dsonar.login=${SONAR_TOKEN}"
         // wait for sonarqube to finish its analysis
         sleep 5
         sh './gradlew checkQualityGate'
       }
     }
+
+    stage('Print Environment') {
+    steps {
+        sh 'echo "JAVA_HOME: $JAVA_HOME"'
+        sh 'echo "PATH: $PATH"'
+        sh './gradlew properties | grep projectname'
+    }
+  }
 
 
     // Move the binary over to the test environment and
