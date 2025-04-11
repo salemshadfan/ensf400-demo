@@ -10,7 +10,6 @@ pipeline {
     skipStagesAfterUnstable()
   }
 
-
   stages {
     stage('Checkout') {
       steps {
@@ -19,24 +18,12 @@ pipeline {
     }
     
     stage('Build Container') {
-      when {
-        anyOf {
-          branch 'main'
-          changeRequest()
-        }
-      }
       steps {
         sh 'docker build -t myapp:pr .'
       }
     }
 
     stage('Unit Tests') {
-      when {
-        anyOf {
-          branch 'main'
-          changeRequest()
-        }
-      }
       steps {
         sh './gradlew test'
       }
@@ -48,12 +35,6 @@ pipeline {
     }
 
     stage('Static Analysis') {
-      when {
-        anyOf {
-          branch 'main'
-          changeRequest()
-        }
-      }
       steps {
         withSonarQubeEnv('My SonarQube') {
           sh './gradlew sonarqube'
