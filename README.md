@@ -83,4 +83,5 @@ For API testing and Selenium tests, please install:
    ```bash
    python get-pip.py
 
+3. Done.
    
