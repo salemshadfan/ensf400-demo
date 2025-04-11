@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   environment {
-    JAVA_HOME = '/usr/lib/jvm/java-11-openjdk-amd64'
+    JAVA_HOME = '/opt/java/11.0.14'
     PATH = "${JAVA_HOME}/bin:${env.PATH}"
     HTTP_PROXY = 'http://127.0.0.1:9888'
     ORG_GRADLE_JAVA_INSTALLATIONS_AUTO_DOWNLOAD = 'false'
